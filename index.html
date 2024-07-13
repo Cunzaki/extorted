@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extorted.kids</title>
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            background-color:black;
+            user-select: none;
+        }
+        .container {
+            height: 100%;
+            width: 100%;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            position: fixed;
+            overflow: hidden;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: 0 auto;
+            opacity: 0;
+            transition: opacity 0.5s ease; 
+        }
+        .main-text {
+            font-family: 'Courier New', Courier;
+            font-size: 38px;
+            font-weight: bold;
+            color: white;
+        }
+        .main-description {
+            font-family: 'Courier New', Courier;
+            color: white;
+        }
+        .main-buttons-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            opacity: 0; 
+            transition: opacity 0.5s ease; 
+        }
+        .button {
+            border-radius: 4px;
+            color: rgba(255, 255, 255, 1);
+            padding-left: 15px;
+            padding-right: 15px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+        .click-cover {
+            height: 100%;
+            width: 100%;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            position: fixed;
+            background-color: black;
+            z-index: 999999;
+            transition-duration: 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .click-cover:hover {
+            cursor: pointer;
+        }
+        .click-text {
+            font-family: 'Courier New', Courier;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+        }
+        .bin-container {
+            height: fit-content;
+            width: 325px;
+            text-align: center;
+            border-width: 1px;
+            border-color: white;
+            border-style: solid;
+            box-shadow: 0px 0px 20px rgba(10, 10, 10, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease; 
+            margin-top: 20px;
+        }
+        .bins-table {
+            border-width: 1px;
+            border-color: rgba(20, 20, 20, 1);
+            border-style: solid;
+            text-align: left;
+            width: 100%;
+        }
+        .bins-th {
+            color: white;
+            font-family: sans-serif;
+            filter: brightness(1.1);
+            background-color: rgba(30, 30, 30, 0.3);
+            padding: 8px;
+        }
+        .bins-td {
+            color: white;
+            font-family: sans-serif;
+            padding: 8px;
+        }
+        .bins-download {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="click-cover" onclick="clickCover()">
+        <a class="click-text">?</a>
+    </div>
+    <div class="container">
+        <div class="main-container">
+            <a class="main-text"></a>
+            <div class="main-buttons-container">
+                <table class="bins-table">
+                    <tr>
+                        <th class="bins-th">Name</th>
+                        <th class="bins-th">Date</th>
+                    </tr>
+                    <tr>
+                        <td class="bins-td"><a class="bins-download" href="https://doxbin.com/upload/glitchvr">glitch</a></td>
+                        <td class="bins-td">Jul 10th, 2024</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <audio id="0700h">
+        <source src="0700h.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        var audio = document.getElementById("0700h");
+
+        function clickCover() {
+            var clickCover = document.querySelector(".click-cover");
+            clickCover.style.opacity = 0;
+            clickCover.addEventListener("transitionend", function(e) {
+                if (e.propertyName === "opacity") {
+                    clickCover.remove();
+                    setTimeout(function() {
+                        writeTitle();
+                        playAudio();
+                        showMainContainer();
+                    }, 300); 
+                }
+            });
+        }
+
+        function writeTitle() {
+            var text = "extorted.kids";
+            var i = 0;
+            function thing() {
+                if (i < text.length) {
+                    $(".main-text").append(text.charAt(i));
+                    i++;
+                    setTimeout(thing, 100);
+                }
+            }
+            thing();
+        }
+
+        function playAudio() {
+    var targetVolume = 0.3; 
+    audio.volume = 0;
+    audio.play();
+
+    var fadeInterval = setInterval(function() {
+        
+        if (audio.volume < targetVolume) {
+            audio.volume += 0.01; 
+        } else {
+            clearInterval(fadeInterval);
+        }
+    }, 100); 
+}
+
+
+        function showMainContainer() {
+            var mainContainer = document.querySelector(".main-container");
+            mainContainer.style.opacity = 1;
+
+            var mainButtonsContainer = document.querySelector(".main-buttons-container");
+            mainButtonsContainer.style.opacity = 1;
+        }
+    </script>
+</body>
+</html>
